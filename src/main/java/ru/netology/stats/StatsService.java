@@ -15,8 +15,24 @@ public class StatsService {
         for (long monthSum : sales) {
             sum = sum + monthSum;
         }
+        // sales.length - длина массива sales
+        // average - среднее количество продаж
         long average = sum / sales.length;
         return average;
+    }
+
+    public int maxSales(long[] sales) {
+        int maxMonth = 0;
+        int month = 0; // переменная для индекса рассматриваемого месяца в массиве
+        for (long sale: sales) {
+            // sales[minMonth] - продажи в месяце minMonth
+            // sale - продажи в рассматриваемом месяце
+            if (sale >= sales[maxMonth]) {
+                maxMonth = month;
+            }
+            month++;
+        }
+        return maxMonth + 1;
     }
 
     public int minSales(long[] sales) {

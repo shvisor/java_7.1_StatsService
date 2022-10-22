@@ -10,7 +10,7 @@ public class StatsServiceTest {
 //    @ParameterizedTest
 //    @CsvFileSource(resources = "/statistics.csv")
     @Test
-    public void totalOfAllSales(/* long expected, long[] sales */) {
+    public void totalAmountAllSales(/* long expected, long[] sales */) {
         StatsService service = new StatsService();
 
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
@@ -22,7 +22,7 @@ public class StatsServiceTest {
 }
 
     @Test
-    public void averageOfSalesPerMonth() {
+    public void averageSalesPerMonth() {
         StatsService service = new StatsService();
 
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
@@ -31,6 +31,17 @@ public class StatsServiceTest {
         long actualAverage = service.averageOfSales(sales);
 
         assertEquals(expectedAverage, actualAverage);
+    }
+
+    @Test
+    public void maximumSalesMonthNumber() {
+        StatsService service = new StatsService();
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+
+        int expectedDay = 8;
+        int actualDay = service.maxSales(sales);
+
+        assertEquals(expectedDay, actualDay);
     }
 
     @Test
