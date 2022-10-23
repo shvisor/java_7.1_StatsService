@@ -1,16 +1,12 @@
 package ru.netology.stats;
 
 import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.params.ParameterizedTest;
-//import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StatsServiceTest {
 
-//    @ParameterizedTest
-//    @CsvFileSource(resources = "/statistics.csv")
     @Test
-    public void totalAmountAllSales(/* long expected, long[] sales */) {
+    public void totalAmountAllSales() {
         StatsService service = new StatsService();
 
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
@@ -38,10 +34,10 @@ public class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expectedDay = 8;
-        int actualDay = service.maxSales(sales);
+        int expectedMonth = 8;
+        long actualMonth = service.maxSales(sales);
 
-        assertEquals(expectedDay, actualDay);
+        assertEquals(expectedMonth, actualMonth);
     }
 
     @Test
@@ -50,9 +46,33 @@ public class StatsServiceTest {
 
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expectedDay = 9;
-        int actualDay = service.minSales(sales);
+        int expectedMonth = 9;
+        int actualMonth = service.minSales(sales);
 
-        assertEquals(expectedDay, actualDay);
+        assertEquals(expectedMonth, actualMonth);
+    }
+
+    @Test
+    public void salesBelowAverage() {
+        StatsService service = new StatsService();
+
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+
+        int expectedSumMonth = 5;
+        long actualSumMonth = service.belowAverage(sales);
+
+        assertEquals(expectedSumMonth, actualSumMonth);
+    }
+
+    @Test
+    public void salesAboveAverage() {
+        StatsService service = new StatsService();
+
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+
+        int expectedSumMonth = 5;
+        long actualSumMonth = service.aboveAverage(sales);
+
+        assertEquals(expectedSumMonth, actualSumMonth);
     }
 }

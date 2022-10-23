@@ -4,21 +4,19 @@ public class StatsService {
 
     public long totalSales(long[] sales) {
         long sum = 0; // переменная для подсчета суммы продаж массива
-        for (long monthSum : sales) { // monthSum - количество продаж в месяц
-            sum = sum + monthSum; // складываем количество продаж в месяц с суммой предыдущих значений
+        for (long sale : sales) { // monthSum - количество продаж в месяц
+            sum = sum + sale; // складываем количество продаж в месяц с суммой предыдущих значений
         }
         return sum;
     }
 
     public long averageOfSales(long[] sales) {
         long sum = 0;
-        for (long monthSum : sales) {
-            sum = sum + monthSum;
+        for (long sale : sales) {
+            sum = sum + sale;
         }
-        // sales.length - длина массива sales
-        // average - среднее количество продаж
-        long average = sum / sales.length;
-        return average;
+        // возвращаем среднее значение
+        return sum / sales.length; // sales.length - длина массива sales
     }
 
     public int maxSales(long[] sales) {
@@ -47,5 +45,25 @@ public class StatsService {
             month++; // следующий рассматриваемый месяц имеет номер на 1 больше
         }
         return minMonth + 1;
+    }
+
+    public long belowAverage(long[] sales) {
+        long sumBelowAverage = 0;
+        for (long sale : sales) {
+            if (sale < averageOfSales(sales)) {
+                sumBelowAverage++;
+            }
+        }
+        return sumBelowAverage;
+    }
+
+    public long aboveAverage(long[] sales) {
+        long sumAboveAverage = 0;
+        for (long sale : sales) {
+            if (sale > averageOfSales(sales)) {
+                sumAboveAverage++;
+            }
+        }
+        return sumAboveAverage;
     }
 }
