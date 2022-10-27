@@ -49,8 +49,9 @@ public class StatsService {
 
     public long belowAverage(long[] sales) {
         long sumBelowAverage = 0;
+        long average = averageOfSales(sales);
         for (long sale : sales) {
-            if (sale < averageOfSales(sales)) {
+            if (sale < average) {
                 sumBelowAverage++;
             }
         }
@@ -59,8 +60,9 @@ public class StatsService {
 
     public long aboveAverage(long[] sales) {
         long sumAboveAverage = 0;
+        long average = averageOfSales(sales);
         for (long sale : sales) {
-            if (sale > averageOfSales(sales)) {
+            if (sale > average) {
                 sumAboveAverage++;
             }
         }
