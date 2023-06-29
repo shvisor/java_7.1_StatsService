@@ -4,12 +4,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StatsServiceTest {
+    StatsService service = new StatsService();
+    long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
+    /**
+     * Проверяем количество суммарных продаж в методе {@link StatsService#totalSales(long[]) totalSales}
+     */
     @Test
-    public void totalAmountAllSales() {
-        StatsService service = new StatsService();
-
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    public void shouldTotalSales() {
 
         int expectedSum = 180;
         long actualSum = service.totalSales(sales);
@@ -17,11 +19,11 @@ public class StatsServiceTest {
         assertEquals(expectedSum, actualSum);
 }
 
+    /**
+     * Проверяем среднюю продажу в методе {@link StatsService#averageOfSales(long[]) averageOfSales}
+     */
     @Test
-    public void averageSalesPerMonth() {
-        StatsService service = new StatsService();
-
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    public void shouldAverageSales() {
 
         int expectedAverage = 15;
         long actualAverage = service.averageOfSales(sales);
@@ -29,10 +31,11 @@ public class StatsServiceTest {
         assertEquals(expectedAverage, actualAverage);
     }
 
+    /**
+     * Проверяем максимальную продажу в методе {@link StatsService#maxSales(long[]) maxSales}
+     */
     @Test
-    public void maximumSalesMonthNumber() {
-        StatsService service = new StatsService();
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    public void shouldMaxSalesMonth() {
 
         int expectedMonth = 8;
         long actualMonth = service.maxSales(sales);
@@ -40,23 +43,22 @@ public class StatsServiceTest {
         assertEquals(expectedMonth, actualMonth);
     }
 
+    /**
+     * Проверяем минимальную продажу в методе {@link StatsService#minSales(long[]) minSales}
+     */
     @Test
-    public void minimumSalesMonthNumber() {
-        StatsService service = new StatsService();
-
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    public void shouldMinSalesMonth() {
 
         int expectedMonth = 9;
         int actualMonth = service.minSales(sales);
 
         assertEquals(expectedMonth, actualMonth);
     }
-
+    /**
+     * Проверяем количество продаж ниже среднего в методе {@link StatsService#belowAverage(long[]) belowAverage}
+     */
     @Test
-    public void salesBelowAverage() {
-        StatsService service = new StatsService();
-
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    public void shouldNumberSalesBelowAverage() {
 
         int expectedSumMonth = 5;
         long actualSumMonth = service.belowAverage(sales);
@@ -64,11 +66,11 @@ public class StatsServiceTest {
         assertEquals(expectedSumMonth, actualSumMonth);
     }
 
+    /**
+     * Проверяем количество продаж выше среднего в методе {@link StatsService#aboveAverage(long[]) aboveAverage}
+     */
     @Test
-    public void salesAboveAverage() {
-        StatsService service = new StatsService();
-
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    public void shouldNumberSalesAboveAverage() {
 
         int expectedSumMonth = 5;
         long actualSumMonth = service.aboveAverage(sales);
